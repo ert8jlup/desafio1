@@ -468,7 +468,7 @@ a {
 
 
 /* =========================================
-   HERO JOURNEY
+   CAMINO DEL HÉROE
    ========================================= */
 
 .hero-grid {
@@ -526,7 +526,7 @@ a {
 
 
 /* =========================================
-   ACTORS
+   ACTORES
    ========================================= */
 
 .actors {
@@ -636,6 +636,97 @@ a {
     font-size: 30px;
 
     text-align: center;
+}
+
+
+/* =========================================
+   DIAGRAMA DEL SISTEMA
+   ========================================= */
+
+.system-diagram {
+    margin-top: 80px;
+
+    padding-top: 60px;
+
+    border-top: 1px solid var(--border);
+}
+
+.system-diagram h3 {
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+
+    font-weight: 400;
+
+    margin-bottom: 40px;
+}
+
+.diagram-flow {
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 12px;
+
+    overflow-x: auto;
+
+    padding-bottom: 10px;
+}
+
+.diagram-node {
+    flex: 1;
+
+    min-width: 150px;
+
+    padding: 25px 20px;
+
+    border: 1px solid var(--border);
+
+    background: var(--background-light);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.diagram-node strong {
+    color: var(--accent);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.diagram-node span {
+    font-family: Georgia, serif;
+
+    font-size: 19px;
+
+    margin-bottom: 7px;
+}
+
+.diagram-node small {
+    color: var(--text-soft);
+
+    font-size: 12px;
+}
+
+.diagram-line {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--accent);
+
+    font-size: 25px;
+
+    min-width: 25px;
 }
 
 
@@ -981,6 +1072,37 @@ a {
     color: var(--text-soft);
 
     font-size: 13px;
+}
+
+
+/* =========================================
+   AI EVIDENCE PLACEHOLDERS
+   ========================================= */
+
+.ai-placeholder {
+    min-height: 170px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+    border: 1px dashed rgba(198, 164, 108, 0.45);
+
+    background: rgba(198, 164, 108, 0.04);
+
+    color: var(--text-soft);
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    line-height: 1.6;
 }
 
 
@@ -1333,6 +1455,26 @@ footer {
         flex-direction: column;
 
         gap: 10px;
+    }
+
+    /* DIAGRAMA EN CELULAR */
+
+    .diagram-flow {
+        flex-direction: column;
+
+        overflow-x: visible;
+    }
+
+    .diagram-node {
+        min-width: 0;
+
+        width: 100%;
+    }
+
+    .diagram-line {
+        transform: rotate(90deg);
+
+        height: 25px;
     }
 
 }
