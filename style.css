@@ -1,117 +1,1740 @@
-/* Tipografía */
-body {
-  font-family: 'Merriweather', serif;
-  background-color: #faf7f2;
-  color: #333;
-  margin: 0;
-  line-height: 1.6;
+/* =========================================================
+   CERRO KALLAMI
+   Tradición e Innovación
+   Hoja de estilos principal
+========================================================= */
+
+/* =========================================================
+   01. VARIABLES Y CONFIGURACIÓN GENERAL
+========================================================= */
+
+:root {
+    --cream: #faf7f2;
+    --cream-dark: #eee5d8;
+    --white: #ffffff;
+
+    --terracotta: #8c2f2f;
+    --terracotta-dark: #642020;
+    --orange: #d98c2f;
+    --orange-light: #e9b66b;
+
+    --green: #2f4f4f;
+    --green-dark: #1d3434;
+    --green-light: #557272;
+
+    --brown: #604536;
+    --text: #333333;
+    --text-light: #6b625b;
+    --border: #ddd0c0;
+
+    --shadow: 0 10px 30px rgba(45, 35, 25, 0.10);
+    --shadow-hover: 0 18px 40px rgba(45, 35, 25, 0.16);
+
+    --max-width: 1180px;
+    --transition: 0.3s ease;
 }
 
-/* Barra de navegación */
+/* =========================================================
+   02. RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Merriweather", Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+strong {
+    color: var(--terracotta);
+}
+
+/* =========================================================
+   03. BARRA DE NAVEGACIÓN
+========================================================= */
+
 header.navbar {
-  background: linear-gradient(90deg, #8c2f2f, #d98c2f);
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    width: 100%;
+
+    background: linear-gradient(
+        90deg,
+        var(--terracotta),
+        var(--orange)
+    );
+
+    color: var(--white);
+
+    min-height: 76px;
+    padding: 1rem 4%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Logo */
+
+.logo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    white-space: nowrap;
+}
+
+/* Navegación */
+
+header.navbar nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.2rem;
 }
 
 header.navbar a {
-  color: white;
-  text-decoration: none;
-  margin: 0 1rem;
-  font-weight: bold;
-  transition: color 0.3s;
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 0.45rem;
+    padding: 0.35rem 0.2rem;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+
+    position: relative;
+
+    transition:
+        color var(--transition),
+        transform var(--transition);
+}
+
+header.navbar a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--white);
+
+    transition: width var(--transition);
 }
 
 header.navbar a:hover {
-  color: #faf7f2;
+    color: var(--cream);
+    transform: translateY(-1px);
 }
 
-/* Hero principal */
+header.navbar a:hover::after {
+    width: 100%;
+}
+
+/* =========================================================
+   04. TEXTOS AUXILIARES
+========================================================= */
+
+.eyebrow {
+    margin-bottom: 0.7rem;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    color: var(--orange);
+}
+
+.section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+
+    margin-bottom: 3rem;
+}
+
+.section-header > span {
+    flex-shrink: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+
+    color: var(--orange);
+
+    border: 1px solid var(--orange);
+
+    padding: 0.5rem 0.7rem;
+}
+
+.section-header h2 {
+    margin: 0;
+
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    color: var(--terracotta);
+}
+
+.section-introduction {
+    max-width: 850px;
+    margin: -1rem auto 3rem;
+
+    color: var(--text-light);
+    font-size: 1.05rem;
+}
+
+/* =========================================================
+   05. HERO / PORTADA
+========================================================= */
+
 .hero {
-  background: url('imagenes/1.jfif') center/cover no-repeat;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    min-height: 88vh;
+
+    background:
+        linear-gradient(
+            rgba(20, 20, 15, 0.25),
+            rgba(20, 20, 15, 0.65)
+        ),
+        url("imagenes/1.jfif")
+        center / cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(140, 47, 47, 0.20),
+            transparent 50%
+        );
 }
 
 .hero-overlay {
-  background: rgba(0,0,0,0.5);
-  padding: 2rem;
-  border-radius: 10px;
-  color: white;
+    position: relative;
+    z-index: 1;
+
+    max-width: 850px;
+
+    margin: 2rem;
+    padding: 3.5rem 3rem;
+
+    color: var(--white);
+
+    background: rgba(20, 20, 18, 0.52);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 4px;
+
+    backdrop-filter: blur(3px);
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.hero .eyebrow {
+    color: var(--orange-light);
 }
 
 .hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+    margin: 0 0 1.5rem;
+
+    font-family: Georgia, serif;
+    font-size: clamp(2.5rem, 6vw, 5.3rem);
+
+    line-height: 1.05;
+
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+}
+
+.hero-description {
+    max-width: 680px;
+    margin: 0 auto 2rem;
+
+    font-size: clamp(1rem, 2vw, 1.2rem);
+
+    color: rgba(255, 255, 255, 0.92);
 }
 
 .hero .button {
-  background: #d98c2f;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s;
+    display: inline-block;
+
+    padding: 0.9rem 1.7rem;
+
+    background: var(--orange);
+    color: var(--white);
+
+    border-radius: 3px;
+
+    text-decoration: none;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+    transition:
+        background var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
 }
 
 .hero .button:hover {
-  background: #8c2f2f;
+    background: var(--terracotta);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Secciones */
+/* =========================================================
+   06. INTRODUCCIÓN
+========================================================= */
+
+.intro {
+    max-width: var(--max-width);
+
+    margin: 0 auto;
+
+    padding: 7rem 5%;
+
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 3rem;
+
+    align-items: start;
+}
+
+.section-number {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+
+    color: var(--orange);
+
+    border-top: 3px solid var(--orange);
+
+    padding-top: 0.5rem;
+}
+
+.intro h2 {
+    max-width: 850px;
+
+    margin: 0 0 2rem;
+
+    font-size: clamp(2rem, 4vw, 3.2rem);
+
+    color: var(--terracotta);
+}
+
+.intro p {
+    max-width: 850px;
+    color: var(--text-light);
+}
+
+/* =========================================================
+   07. SECCIONES GENERALES
+========================================================= */
+
 .section {
-  padding: 4rem 2rem;
-  max-width: 1000px;
-  margin: auto;
+    width: 100%;
+    max-width: var(--max-width);
+
+    margin: 0 auto;
+
+    padding: 7rem 5%;
 }
 
-.section h2 {
-  color: #8c2f2f;
-  margin-bottom: 1rem;
+.section:nth-of-type(even) {
+    background: transparent;
 }
 
-.section p.eyebrow {
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  color: #d98c2f;
-  letter-spacing: 2px;
+/* =========================================================
+   08. RELATO
+========================================================= */
+
+.story-layout {
+    display: grid;
+
+    grid-template-columns: minmax(300px, 0.95fr) minmax(300px, 1.05fr);
+
+    gap: 4rem;
+
+    align-items: start;
 }
 
-/* Tarjetas del storyboard */
+.story-image {
+    position: sticky;
+    top: 110px;
+}
+
+.story-image img {
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    border-radius: 3px;
+
+    box-shadow: var(--shadow);
+}
+
+.story-text {
+    font-size: 1.03rem;
+}
+
+.story-text p {
+    color: var(--text-light);
+}
+
+.story-text strong {
+    color: var(--terracotta);
+}
+
+/* =========================================================
+   09. VIDEO
+========================================================= */
+
+.video-section {
+    padding: 7rem 5%;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--cream-dark),
+            var(--cream)
+        );
+}
+
+.video-section .section-header,
+.video-section .video-container,
+.video-section .video-note {
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-container {
+    overflow: hidden;
+
+    background: #111;
+
+    border-radius: 4px;
+
+    box-shadow: var(--shadow-hover);
+
+    border: 5px solid var(--green-dark);
+}
+
+.video-container video {
+    display: block;
+
+    width: 100%;
+
+    max-height: 700px;
+
+    background: #000;
+}
+
+.video-note {
+    padding-top: 1.2rem;
+
+    color: var(--text-light);
+
+    font-size: 0.9rem;
+
+    text-align: center;
+}
+
+/* =========================================================
+   10. SECCIÓN OSCURA
+========================================================= */
+
+.dark-section {
+    max-width: none;
+
+    padding-left: max(5%, calc((100% - var(--max-width)) / 2));
+    padding-right: max(5%, calc((100% - var(--max-width)) / 2));
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green-dark),
+            var(--green)
+        );
+
+    color: var(--cream);
+}
+
+.dark-section .section-header h2 {
+    color: var(--orange-light);
+}
+
+.dark-section .section-introduction {
+    color: rgba(250, 247, 242, 0.75);
+}
+
+.dark-section .eyebrow {
+    color: var(--orange-light);
+}
+
+/* =========================================================
+   11. CAMINO DEL HÉROE
+========================================================= */
+
+.hero-grid {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 1rem;
+}
+
+.hero-grid article {
+    min-height: 250px;
+
+    padding: 1.5rem;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+}
+
+.hero-grid article:hover {
+    transform: translateY(-6px);
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border-color: var(--orange);
+}
+
+.hero-grid article > span {
+    display: block;
+
+    margin-bottom: 1rem;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 900;
+
+    color: var(--orange);
+}
+
+.hero-grid h3 {
+    margin: 0 0 1rem;
+
+    font-size: 1.1rem;
+
+    color: var(--white);
+}
+
+.hero-grid p {
+    margin: 0;
+
+    color: rgba(250, 247, 242, 0.72);
+
+    font-size: 0.88rem;
+}
+
+/* =========================================================
+   12. ACTORES DEL SISTEMA
+========================================================= */
+
+.actors {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 1.2rem;
+
+    margin: 3rem 0 5rem;
+}
+
+.actor {
+    padding: 2rem 1.5rem;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-top: 4px solid var(--terracotta);
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.actor:hover {
+    transform: translateY(-5px);
+
+    box-shadow: var(--shadow);
+}
+
+.actor-icon {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 1.3rem;
+
+    border-radius: 50%;
+
+    background: var(--orange);
+
+    position: relative;
+}
+
+.actor-icon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    top: 12px;
+    left: 12px;
+
+    border-radius: 50%;
+
+    background: var(--cream);
+}
+
+.actor h3 {
+    margin: 0 0 0.7rem;
+
+    color: var(--terracotta);
+
+    font-size: 1.15rem;
+}
+
+.actor p {
+    margin: 0;
+
+    color: var(--text-light);
+
+    font-size: 0.9rem;
+}
+
+/* =========================================================
+   13. ENTRADA / PROCESO / SALIDA
+========================================================= */
+
+.process {
+    display: grid;
+
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+
+    align-items: center;
+
+    gap: 1.2rem;
+
+    margin: 3rem 0 5rem;
+}
+
+.process-step {
+    padding: 2rem;
+
+    background: var(--green);
+
+    color: var(--cream);
+
+    min-height: 220px;
+
+    border-radius: 3px;
+}
+
+.process-step > span {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 0.7rem;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    color: var(--orange-light);
+}
+
+.process-step h3 {
+    margin: 0.7rem 0;
+
+    color: var(--white);
+}
+
+.process-step p {
+    margin: 0;
+
+    font-size: 0.9rem;
+
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.process-arrow {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 2rem;
+    font-weight: 900;
+
+    color: var(--orange);
+}
+
+/* =========================================================
+   14. DIAGRAMA DEL SISTEMA
+========================================================= */
+
+.system-diagram {
+    padding: 3rem;
+
+    background: var(--cream-dark);
+
+    border: 1px solid var(--border);
+
+    border-radius: 3px;
+}
+
+.system-diagram h3 {
+    margin-top: 0;
+
+    color: var(--terracotta);
+
+    font-size: 1.6rem;
+}
+
+.diagram-flow {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 0.5rem;
+
+    overflow-x: auto;
+
+    padding: 2rem 0 1rem;
+}
+
+.diagram-node {
+    flex: 0 0 150px;
+
+    min-height: 125px;
+
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: var(--white);
+
+    border: 2px solid var(--orange);
+
+    text-align: center;
+
+    border-radius: 3px;
+}
+
+.diagram-node strong {
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: var(--orange);
+
+    font-size: 0.8rem;
+}
+
+.diagram-node span {
+    margin: 0.4rem 0;
+
+    color: var(--terracotta);
+
+    font-weight: 800;
+}
+
+.diagram-node small {
+    color: var(--text-light);
+
+    font-size: 0.72rem;
+}
+
+.diagram-line {
+    flex: 0 0 auto;
+
+    color: var(--terracotta);
+
+    font-size: 1.5rem;
+
+    font-weight: 900;
+}
+
+/* =========================================================
+   15. PROBLEMA
+========================================================= */
+
+.problem-section {
+    padding: 6rem 5%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--terracotta),
+            var(--terracotta-dark)
+        );
+
+    color: var(--cream);
+
+    display: grid;
+
+    grid-template-columns: 1.1fr 0.9fr;
+
+    gap: 5rem;
+
+    align-items: center;
+}
+
+.problem-section > div {
+    max-width: 600px;
+}
+
+.problem-section > div:first-child {
+    margin-left: auto;
+}
+
+.problem-section > div:last-child {
+    margin-right: auto;
+}
+
+.problem-section .eyebrow {
+    color: var(--orange-light);
+}
+
+.problem-section h2 {
+    margin: 0;
+
+    font-size: clamp(2rem, 4vw, 3.4rem);
+
+    color: var(--white);
+}
+
+.problem-section p {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+/* =========================================================
+   16. PROPUESTA TECNOLÓGICA
+========================================================= */
+
+.technology-section {
+    max-width: var(--max-width);
+}
+
+.technology-intro {
+    display: grid;
+
+    grid-template-columns: 1fr 0.9fr;
+
+    gap: 4rem;
+
+    align-items: center;
+
+    margin-bottom: 5rem;
+}
+
+.technology-intro h3 {
+    margin-top: 0;
+
+    color: var(--green);
+
+    font-size: 1.8rem;
+}
+
+.technology-intro p {
+    color: var(--text-light);
+}
+
+.tech-image img {
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+
+    border-radius: 3px;
+
+    box-shadow: var(--shadow);
+}
+
+.tech-flow {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 1rem;
+}
+
+.tech-flow > div {
+    padding: 1.7rem 1.3rem;
+
+    background: var(--green);
+
+    color: var(--white);
+
+    border-bottom: 4px solid var(--orange);
+
+    transition: transform var(--transition);
+}
+
+.tech-flow > div:hover {
+    transform: translateY(-6px);
+}
+
+.tech-flow strong {
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: var(--orange-light);
+
+    font-size: 0.8rem;
+}
+
+.tech-flow h3 {
+    margin: 0.7rem 0;
+
+    color: var(--white);
+
+    font-size: 1rem;
+}
+
+.tech-flow p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 0.82rem;
+}
+
+/* =========================================================
+   17. STORYBOARD
+========================================================= */
+
+.storyboard-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 2rem;
+}
+
 .storyboard-card {
-  background: white;
-  border: 2px solid #d98c2f;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s;
+    overflow: hidden;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 3px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
 }
 
 .storyboard-card:hover {
-  transform: scale(1.02);
+    transform: translateY(-6px);
+
+    box-shadow: var(--shadow-hover);
 }
 
 .storyboard-card img {
-  width: 100%;
-  display: block;
+    width: 100%;
+
+    height: 280px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.5s ease;
 }
 
-.storyboard-card div {
-  padding: 1rem;
+.storyboard-card:hover img {
+    transform: scale(1.04);
 }
 
-/* Sección oscura */
-.dark-section {
-  background-color: #2f4f4f;
-  color: #faf7f2;
+.storyboard-card > div {
+    padding: 1.6rem;
 }
 
-.dark-section h2 {
-  color: #d98c2f;
+.storyboard-card span {
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: var(--orange);
+
+    font-size: 0.7rem;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
 }
+
+.storyboard-card h3 {
+    margin: 0.5rem 0 1rem;
+
+    color: var(--terracotta);
+
+    font-size: 1.35rem;
+}
+
+.storyboard-card p {
+    margin-bottom: 0.7rem;
+
+    color: var(--text-light);
+
+    font-size: 0.9rem;
+}
+
+.storyboard-card p strong {
+    color: var(--green);
+}
+
+/* =========================================================
+   18. IA
+========================================================= */
+
+.ai-tools {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1.5rem;
+
+    margin: 3rem 0 5rem;
+}
+
+.ai-tools article {
+    padding: 2rem;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    transition: transform var(--transition);
+}
+
+.ai-tools article:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--orange);
+}
+
+.ai-tools article > span {
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: var(--orange);
+
+    font-size: 0.8rem;
+    font-weight: 900;
+}
+
+.ai-tools h3 {
+    margin: 0.8rem 0;
+
+    color: var(--white);
+}
+
+.ai-tools p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 0.9rem;
+}
+
+.ai-process {
+    display: grid;
+
+    grid-template-columns: 0.75fr 1.25fr;
+
+    gap: 4rem;
+
+    padding: 3rem;
+
+    background: rgba(0, 0, 0, 0.15);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ai-process-text h3 {
+    color: var(--white);
+
+    font-size: 1.5rem;
+}
+
+.ai-process-text p:not(.eyebrow) {
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 0.9rem;
+}
+
+.ai-evidence {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 1rem;
+}
+
+.evidence-box {
+    padding: 1.3rem;
+
+    background: var(--cream);
+
+    color: var(--text);
+
+    border-left: 4px solid var(--orange);
+}
+
+.evidence-box > span {
+    display: block;
+
+    margin-bottom: 0.8rem;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: var(--terracotta);
+
+    font-size: 0.68rem;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.evidence-box p {
+    margin: 0;
+
+    font-size: 0.78rem;
+
+    line-height: 1.6;
+}
+
+.ai-placeholder {
+    min-height: 130px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+
+    text-align: center;
+
+    background: var(--cream-dark);
+
+    border: 2px dashed var(--border);
+
+    color: var(--text-light);
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 0.7rem;
+}
+
+/* =========================================================
+   19. CONCLUSIÓN
+========================================================= */
+
+.conclusion {
+    padding: 8rem 5%;
+
+    background:
+        linear-gradient(
+            rgba(30, 25, 20, 0.70),
+            rgba(30, 25, 20, 0.82)
+        ),
+        url("imagenes/1.jfif")
+        center / cover fixed no-repeat;
+
+    color: var(--cream);
+
+    text-align: center;
+}
+
+.conclusion-content {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 3rem;
+}
+
+.conclusion .eyebrow {
+    color: var(--orange-light);
+}
+
+.conclusion h2 {
+    margin: 0 0 2rem;
+
+    color: var(--white);
+
+    font-size: clamp(2.2rem, 5vw, 4rem);
+}
+
+.conclusion p {
+    color: rgba(255, 255, 255, 0.8);
+
+    font-size: 1rem;
+}
+
+.final-message {
+    margin-top: 3rem;
+
+    padding: 2rem;
+
+    border-top: 1px solid var(--orange);
+    border-bottom: 1px solid var(--orange);
+
+    color: var(--orange-light);
+
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+
+    font-weight: 700;
+
+    font-style: italic;
+}
+
+/* =========================================================
+   20. FOOTER
+========================================================= */
+
+footer {
+    padding: 5rem 5% 2rem;
+
+    background: var(--green-dark);
+
+    color: var(--cream);
+}
+
+.footer-main {
+    max-width: var(--max-width);
+
+    margin: 0 auto 4rem;
+
+    padding-bottom: 2rem;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-main h2 {
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: var(--orange);
+
+    font-size: 2rem;
+
+    letter-spacing: 5px;
+}
+
+.footer-main p {
+    margin: 0.5rem 0 0;
+
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.credits-grid {
+    max-width: var(--max-width);
+
+    margin: 0 auto 4rem;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 3rem;
+}
+
+.credits-grid > div > span {
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: var(--orange);
+
+    font-size: 0.7rem;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.credits-grid p {
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 0.85rem;
+}
+
+.credits-grid p:first-of-type {
+    color: var(--white);
+}
+
+.footer-bottom {
+    max-width: var(--max-width);
+
+    margin: auto;
+    padding-top: 1.5rem;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    font-size: 0.75rem;
+}
+
+/* =========================================================
+   21. EFECTOS DE SELECCIÓN
+========================================================= */
+
+::selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+/* =========================================================
+   22. BARRA DE SCROLL
+========================================================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cream-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--terracotta);
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--orange);
+}
+
+/* =========================================================
+   23. RESPONSIVE - TABLETS
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    header.navbar {
+        padding: 1rem 2rem;
+    }
+
+    header.navbar nav {
+        gap: 0;
+    }
+
+    header.navbar a {
+        margin: 0 0.25rem;
+        font-size: 0.75rem;
+    }
+
+    .hero-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .actors {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tech-flow {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .ai-process {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+@media (max-width: 800px) {
+
+    header.navbar {
+        position: relative;
+
+        flex-direction: column;
+
+        gap: 1rem;
+
+        padding: 1rem;
+    }
+
+    header.navbar nav {
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 75vh;
+    }
+
+    .hero-overlay {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+
+        gap: 1rem;
+
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .section-number {
+        font-size: 2rem;
+
+        width: fit-content;
+    }
+
+    .section {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .story-layout {
+        grid-template-columns: 1fr;
+
+        gap: 2rem;
+    }
+
+    .story-image {
+        position: static;
+    }
+
+    .story-image img {
+        aspect-ratio: 16 / 9;
+    }
+
+    .process {
+        grid-template-columns: 1fr;
+
+        gap: 0.7rem;
+    }
+
+    .process-arrow {
+        text-align: center;
+
+        transform: rotate(90deg);
+    }
+
+    .problem-section {
+        grid-template-columns: 1fr;
+
+        gap: 2rem;
+
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .problem-section > div:first-child,
+    .problem-section > div:last-child {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .technology-intro {
+        grid-template-columns: 1fr;
+
+        gap: 2rem;
+    }
+
+    .storyboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-tools {
+        grid-template-columns: 1fr;
+    }
+
+    .credits-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* =========================================================
+   25. RESPONSIVE - CELULARES
+========================================================= */
+
+@media (max-width: 600px) {
+
+    html {
+        scroll-padding-top: 20px;
+    }
+
+    body {
+        font-size: 0.95rem;
+    }
+
+    header.navbar {
+        align-items: flex-start;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    header.navbar nav {
+        width: 100%;
+
+        justify-content: flex-start;
+
+        gap: 0.1rem;
+    }
+
+    header.navbar a {
+        margin: 0 0.35rem 0.4rem 0;
+
+        font-size: 0.68rem;
+    }
+
+    .hero {
+        min-height: 72vh;
+    }
+
+    .hero-overlay {
+        width: calc(100% - 2rem);
+
+        margin: 1rem;
+
+        padding: 2rem 1.2rem;
+    }
+
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+    }
+
+    .intro {
+        padding-left: 1.3rem;
+        padding-right: 1.3rem;
+    }
+
+    .section {
+        padding-left: 1.3rem;
+        padding-right: 1.3rem;
+    }
+
+    .section-header {
+        gap: 0.8rem;
+
+        margin-bottom: 2rem;
+    }
+
+    .section-header > span {
+        font-size: 0.7rem;
+
+        padding: 0.4rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-introduction {
+        font-size: 0.9rem;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-grid article {
+        min-height: auto;
+    }
+
+    .actors {
+        grid-template-columns: 1fr;
+
+        margin-bottom: 3rem;
+    }
+
+    .system-diagram {
+        padding: 1.5rem 1rem;
+    }
+
+    .diagram-flow {
+        justify-content: flex-start;
+    }
+
+    .tech-flow {
+        grid-template-columns: 1fr;
+    }
+
+    .storyboard-card img {
+        height: 220px;
+    }
+
+    .ai-process {
+        padding: 1.2rem;
+    }
+
+    .ai-evidence {
+        grid-template-columns: 1fr;
+    }
+
+    .evidence-box {
+        padding: 1rem;
+    }
+
+    .conclusion {
+        padding: 5rem 1.3rem;
+        background-attachment: scroll;
+    }
+
+    .conclusion-content {
+        padding: 1rem;
+    }
+
+    .final-message {
+        padding: 1.5rem 0;
+    }
+
+    footer {
+        padding-left: 1.3rem;
+        padding-right: 1.3rem;
+    }
+
+    .credits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+
+/* =========================================================
+   26. PANTALLAS MUY PEQUEÑAS
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+
+    .hero-overlay {
+        padding: 1.5rem 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.55rem;
+    }
+
+    .storyboard-card img {
+        height: 190px;
+    }
+
+    .footer-main h2 {
+        font-size: 1.5rem;
+
+        letter-spacing: 3px;
+    }
+}
+
+/* =========================================================
+   27. ACCESIBILIDAD / REDUCCIÓN DE MOVIMIENTO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* =========================================================
+   FIN DEL DOCUMENTO
+========================================================= */
