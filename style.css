@@ -37,6 +37,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Para que el scroll no tape el contenido con el navbar fijo */
 }
 
 body {
@@ -61,6 +62,21 @@ a {
     text-decoration: none;
 }
 
+/* Mejora de accesibilidad para focus */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+
+/* Cursor pointer para elementos interactivos */
+.button,
+.actor,
+.storyboard-card,
+.tech-image {
+    cursor: pointer;
+}
+
 
 /* =========================================
    DECORACIÓN ANDINA
@@ -77,7 +93,7 @@ body::before {
     width: 100%;
     height: 4px;
 
-    z-index: 2000;
+    z-index: 1001; /* Cambiado para que quede debajo del navbar si es necesario */
 
     background:
         repeating-linear-gradient(
@@ -171,7 +187,7 @@ body::before {
 
 
 /* =========================================
-   HERO
+   HERO - CORREGIDO
    ========================================= */
 
 .hero {
@@ -184,14 +200,17 @@ body::before {
 
     position: relative;
 
-    background:
+    background-color: var(--background); /* ← Color de respaldo añadido */
+    background-image:
         linear-gradient(
             to bottom,
             rgba(20, 13, 9, 0.15),
             rgba(15, 10, 7, 0.92)
         ),
-        url("imagenes/1.jfif")
-        center / cover no-repeat;
+        url("imagenes/1.jfif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     text-align: center;
 }
@@ -482,6 +501,8 @@ body::before {
     object-fit: cover;
 
     transition: transform 0.8s ease;
+
+    background: var(--background-light); /* Color de respaldo para imágenes */
 }
 
 .story-image:hover img {
@@ -555,7 +576,7 @@ body::before {
 
     margin-top: 20px;
 
-    max-width: 800px !important;
+    max-width: 800px; /* Eliminado !important */
 }
 
 
@@ -784,7 +805,7 @@ body::before {
 
 
 /* =========================================
-   PROBLEMA
+   PROBLEMA - CORREGIDO
    ========================================= */
 
 .problem-section {
@@ -900,6 +921,8 @@ body::before {
     object-fit: cover;
 
     transition: 0.7s ease;
+
+    background: var(--background-light); /* Color de respaldo para imágenes */
 }
 
 .tech-image:hover img {
@@ -1002,6 +1025,8 @@ body::before {
     min-height: 270px;
 
     object-fit: cover;
+
+    background: var(--background-light); /* Color de respaldo para imágenes */
 }
 
 .storyboard-card > div {
@@ -1159,7 +1184,7 @@ body::before {
 
 
 /* =========================================
-   CONCLUSIÓN
+   CONCLUSIÓN - CORREGIDO
    ========================================= */
 
 .conclusion {
@@ -1174,13 +1199,16 @@ body::before {
 
     padding: 100px 35px;
 
-    background:
+    background-color: var(--background); /* ← Color de respaldo añadido */
+    background-image:
         linear-gradient(
             rgba(20, 12, 8, 0.55),
             rgba(10, 7, 5, 0.9)
         ),
-        url("imagenes/6.jfif")
-        center / cover no-repeat;
+        url("imagenes/6.jfif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .conclusion-content {
